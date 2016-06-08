@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  
+  zookeeper1:
+    image: athlinksengineering/confluent-zookeeper
+    hostname: zookeeper1
+    mem_limit: 1024m
+    memswap_limit: 0m
+    environment:
+      MYID: "1"
+      OTHER_NODES: "3=zookeeper3,2=zookeeper2"
+    ports:
+      - "2181"
+      - "2888"
+      - "3888"
+
+  zookeeper2:
+    image: athlinksengineering/confluent-zookeeper
+    hostname: zookeeper2
+    mem_limit: 1024m
+    memswap_limit: 0m
+    environment:
+      MYID: "2"
+      OTHER_NODES: "1=zookeeper1,3=zookeeper3"
+    ports:
+      - "2181"
+      - "2888"
+      - "3888"
+
+  zookeeper3:
+    image: athlinksengineering/confluent-zookeeper
+    hostname: zookeeper3
+    mem_limit: 1024m
+    memswap_limit: 0m
+    environment:
+      MYID: "3"
+      OTHER_NODES: "1=zookeeper1,2=zookeeper2"
+    ports:
+      - "2181"
+      - "2888"
+      - "3888"
