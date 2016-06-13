@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build -t athlinksengineering/confluent-zookeeper . && \
+docker build -t athlinks/confluent-zookeeper . && \
 echo "SUCCESS!"
